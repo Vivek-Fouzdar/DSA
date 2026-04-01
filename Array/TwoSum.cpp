@@ -22,10 +22,32 @@ vector<int> BruteTwosum(vector<int> &nums, int target)
     return {-1,-1};
 }
 
+vector<int> BetterTwosum(vector<int>& nums, int target) {
+     int n  = nums.size();
+     unordered_map<int,int> hashmap;
+
+     for(int i = 0 ; i<n; i++)
+     {
+        int complement = target - nums[i];
+        if(hashmap.find(complement) != hashmap.end())
+        {
+            return {hashmap[complement],i};
+        }
+
+        hashmap[nums[i]] = i;
+     }   
+
+     return {-1,-1};
+
+     
+    }
+
+
+    
 int main()
 {
     vector<int> nums = {1,2,3,4,5};
-    vector<int> ans = BruteTwosum(nums,3);
+    vector<int> ans = BetterTwosum(nums,3);
     if(ans[0] != -1)
     {
         cout<<"["<<ans[0]<<","<<ans[1]<<"]";
