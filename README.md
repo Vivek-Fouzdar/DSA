@@ -25,7 +25,7 @@ Dynamic Programming<br>
 Searching & Sorting<br>
 Stacks & Queues<br>
 Hashing<br>
-br<>
+<br>
 🛠️ Tech Stack---------------------------<br>
 Language: C++<br>
 Tools: VS Code, Git, GitHub<br>
@@ -45,7 +45,6 @@ DSA-Solutions/<br>
 Each solution includes:<br>
 <br>
 Problem Name<br>
-Platform (LeetCode/GFG, etc.)<br>
 Approach<br>
 Time Complexity<br>
 Space Complexity<br>
