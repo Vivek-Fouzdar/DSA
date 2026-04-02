@@ -22,6 +22,7 @@ vector<int> BruteTwosum(vector<int> &nums, int target)
     return {-1,-1};
 }
 
+// using extra space - HashMap
 vector<int> BetterTwosum(vector<int>& nums, int target) {
      int n  = nums.size();
      unordered_map<int,int> hashmap;
@@ -29,8 +30,8 @@ vector<int> BetterTwosum(vector<int>& nums, int target) {
      for(int i = 0 ; i<n; i++)
      {
         int complement = target - nums[i];
-        if(hashmap.find(complement) != hashmap.end())
-        {
+        if(hashmap.find(complement) != hashmap.end())           //Time Complexity:O(n)
+        {                                                        //Space Complexity:O(n)
             return {hashmap[complement],i};
         }
 
@@ -41,6 +42,42 @@ vector<int> BetterTwosum(vector<int>& nums, int target) {
 
      
     }
+
+ // Two pointers + greedy
+vector<int> OptimalTwosum(vector<int>& nums, int target)
+{
+    int n  = nums.size();
+
+    vector<pair<int, int>> numsWithIndex;  // store elements with indices 
+
+    for(int i = 0 ; i <n;i++)
+    {
+        numsWithIndex.push_back({nums[i],i});
+    }
+
+    sort(numsWithIndex.begin(),numsWithIndex.end());       // sort elements by value 
+
+    int left = 0 ;
+    int right = n-1; 
+
+    while(left < right )
+    {
+        int sum = numsWithIndex[left].first + numsWithIndex[right].first;
+        if(sum == target)
+        {   //Return Original Indices
+            return {numsWithIndex[left].second,numsWithIndex[right].second};
+        }
+        else if (sum < target)
+        {
+            left++;
+        }                                                                              //Time Complexity:O(nlogn)
+        else{                                                                          //Space Complexity:O(n)
+            right++;
+        }
+    }
+    return {-1,-1};
+
+}
 
 
     
